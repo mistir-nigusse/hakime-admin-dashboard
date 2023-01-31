@@ -1,4 +1,30 @@
 
+export const upcomingAppointments = [
+   
+    // {
+    //     Header: "Patient",
+    //     field: "patient_name", 
+    //     flex:1,
+    //     headerClassName: 'super-app-theme--header',
+    
+    // },
+    // {
+    //     Header: "Doctor",
+    //     field: "Doctor_name",
+    //     flex:1
+    // },
+    {
+        Header: "Appointment Date",
+        field: "date",
+        flex:1
+    },
+    {
+        Header: "Price",
+        field: "price",
+        flex:0.5
+    },
+  
+];
 export const USERS_COLUMNS = [
     {
         Header: "First Name",
@@ -68,84 +94,6 @@ export const APPOINTMENT = [
     },
   
 ];
-export const patientsColumn = [ 
-    {
-        field: "id",
-        headerName: "ID",
-        headerClassName: 'super-app-theme--header',
-    headerAlign: 'center',
-        flex:0.3,
-        align: "center"
-    },
-    {
-        field: "fullName",
-        headerClassName: 'super-app-theme--header',
-        headerAlign: 'center',
-        headerName: "Full Name",
-        flex:1,
-        align: "center"
-    },
-    {
-        field: "totApp",
-        headerName: "Total appointments",
-        headerClassName: 'super-app-theme--header',
-        headerAlign: 'center',
-        flex:0.5,
-        align:'center'
-    },
-    {
-        field: "isActive",
-        headerName: "Engagment",
-        headerClassName: 'super-app-theme--header',
-        headerAlign: 'center',
-        flex:1,
-        align: "center"
-    },
-]
-
-export const mycolumn = [
-    {
-        field: "first_name",
-        headerName: "First name",
-        
-        flex:1,
-        
-      },
-     
-      {
-        field: "last_name",
-        headerName: "Last name",
-        
-        flex:1,
-    
-      },
-       {
-        field: "gender",
-        headerName: "Gender",
-        
-        flex:0.5,
-        
-      },
-      {
-        field: "specialization",
-        headerName: "Specialization",
-        
-        flex:1,
-        
-      },
-      {
-        field: "rate",
-        headerName: "Rate",
-        flex:0.5
-      
-      },
-      {
-        field: "totalEarning",
-        headerName: "Total earning",
-        flex:0.5
-      
-      },
-]
 export const ad = [
     {
         field:"id",

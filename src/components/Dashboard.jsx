@@ -1,15 +1,15 @@
 
 import React from 'react';
-import Barchart from './barChart';
+import Barchart from './charts/barChart';
 import HomeCard from './Home_cards';
-import { Linechart } from './linechart';
-import PatientsChart from './patientChart';
+import { Linechart } from './charts/linechart';
+import PatientsChart from './charts/patientChart';
 import { DataGrid } from '@mui/x-data-grid';
-import  app from '../components/data/appDB.json';
+import  app from './data/appDB.json';
 import { APPOINTMENT } from './columns/columns';
   const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   
-const Home = () => {
+const Dashboard = () => {
     return (
         <>
         <div className='grid w-full grid-cols-4   my-4' >
@@ -72,4 +72,4 @@ const Home = () => {
         </>
     );
 };
-export default Home;
+export default Dashboard;

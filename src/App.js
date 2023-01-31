@@ -4,22 +4,33 @@ import LoginPage from "./components/Login";
 import Layout from "./components/Layout";
 import Doctors from "./components/Doctors";
 import Patients from "./components/Patients";
-import Home from "./components/Home";
+import Dashboard from "./components/Dashboard";
 import {BrowserRouter as Router,Routes,Route,Link,useParams}from 'react-router-dom';
 import {useQuery, gql} from '@apollo/client';
+import { HttpLink } from "@apollo/client";
 import Appointments from "./components/appointments";
 import Test from "./components/Test";
 import Individual from "./components/Individual";
 import Advertisement from "./components/advertisement";
 import Requests from "./components/requests/Request";
 import UnapprovedDoctor from "./components/requests/Detail page/unapprovedDoctorProfile"
-import DoctorTabs from "./components/AllDoctors";
+import DoctorTabs from "./components/DoctorsTab";
+import {GETDOCTORS} from './components/Queries/queryDoctors.js'
+import { DisplayDoctors } from "./components/Queries/queryDoctors.js";
+import { GET_PATIENTS } from "./components/Queries/queryPatients";
+import { DisplayPatients } from "./components/Queries/queryPatients";
+import { DisplayAppointments } from "./components/Queries/queryAppointments";
 // import UnapprovedDoctor from "./components/requests/Detail page/unapprovedDoctorProfile";
 // const uri = process.env.REACT_APP_API_URL;
 //  const uri = 'https://hakime-admin.hasura.app/v1/graphql'
 const client = new ApolloClient({
+  link: new HttpLink({
+    uri: 'https://hakime.hasura.app/v1/graphql',
+    headers: {
+      'x-hasura-admin-secret': 'hakime' 
+    },
   
-  // uri,
+  }),
   cache: new InMemoryCache(),
   connectToDevTools:true
 });
@@ -27,33 +38,8 @@ const client = new ApolloClient({
 
 
 
-// const GET_LOCATIONS = gql`
-//   query GetLocations {
-//     locations {
-//       id
-//       name
-//       description
-//       photo
-//     }
-//   }
-// `;
-// function DisplayLocations() {
-//   const { loading, error, data } = useQuery(GET_LOCATIONS);
 
-//   if (loading) return <p>Loading...</p>;
-//   if (error) return <p>Error : {error.message}</p>;
 
-//   return data.locations.map(({ id, name, description, photo }) => (
-//     <div key={id}>
-//       <h3>{name}</h3>
-//       <img width="400" height="250" alt="location-reference" src={`${photo}`} />
-//       <br />
-//       <b>About this location:</b>
-//       <p>{description}</p>
-//       <br />
-//     </div>
-//   ));
-// }
 
 function App() {
   // client
@@ -74,15 +60,15 @@ function App() {
 
   
  <ApolloProvider client={client}>
-   {/* <DisplayLocations/> */}
+   {/* <DisplayDoctors/> */}
   <Router>
-  {/* <Route path="/login" element={<LoginPage/>}/> */}
         <Layout>
         <Routes>
         <Route path="/individual" element={<Individual/>}/>
           <Route path="/ads" element={<Advertisement/>}/>
-          <Route path="/" element={<Home/>}/>
-          {/* <Route path="/" element={<Test/>}/> */}
+          <Route path="/" element={<Dashboard/>}/>
+          <Route path="/" element={<Test/>}/>
+  <Route path="/login" element={<LoginPage/>}/>
 
           <Route path="/Requests" element={<Requests/>}/>
 
