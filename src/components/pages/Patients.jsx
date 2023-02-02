@@ -1,12 +1,9 @@
 import React from 'react';
-import PatientsChart from './charts/patientChart';
-import { DataGrid, GridRowsProp, GridColDef,GridToolbarExport,GridToolbarColumnsButton,GridToolbarFilterButton,GridToolbar, GridToolbarContainer } from "@mui/x-data-grid";
-import { patientsColumn } from "./columns/columns";
-import rows from "../components/data/patient.json"
-import { Piechart } from './charts/piechart';
+import PatientsChart from '../charts/patientChart';
+
+import { Piechart } from '../charts/piechart';
 import Box from '@mui/material/Box';
-import CustomToolbar from './CustomToolbar';
-import AllPatientsDG from './datagrids/AllPatientsDG';
+import AllPatientsDG from '../datagrids/AllPatientsDG';
 
 
 const Patients = () => {

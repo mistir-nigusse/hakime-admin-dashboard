@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Container } from "@mui/material";
 import { DataGrid, GridRowsProp, GridColDef,GridToolbar } from "@mui/x-data-grid";
 import {useNavigate} from 'react-router-dom';
-import {GET_DOCTORS} from "../Queries/queryDoctors";
+import {GET_DOCTORS} from "../model/Queries/queryDoctors";
 import Box from '@mui/material/Box';
-import CustomToolbar from "../CustomToolbar";
+import CustomToolbar from "./components/CustomToolbar";
 import { useQuery } from "@apollo/client";
 import Loader from "../utils/loading";
 

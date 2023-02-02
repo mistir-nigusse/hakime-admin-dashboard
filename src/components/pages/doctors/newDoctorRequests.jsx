@@ -1,11 +1,11 @@
 import React from "react";
-import Data from "./data/dbb.json"
+import Data from "../../data/dbb.json"
 // import {ApolloClient,InMemoryCache,ApolloProvider} from '@apollo/client';
 import {useQuery, gql} from '@apollo/client';
-import ErrorPage from "./utils/errorPage";
+import ErrorPage from "../../utils/errorPage";
 import {useNavigate} from "react-router-dom"
-import Loader from "./utils/loading";
-import doctor from "../images/doctor.jpg"
+import Loader from "../../utils/loading";
+import doctor from "../../../images/doctor.jpg"
 
 const GET_UNAPPROVED_DOCTORS = gql `
  query GetDoctors($approvalStatus: String!){

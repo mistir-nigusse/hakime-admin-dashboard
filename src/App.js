@@ -1,25 +1,20 @@
 import React from "react";
 import {ApolloClient,InMemoryCache,ApolloProvider} from '@apollo/client';
-import LoginPage from "./components/Login";
-import Layout from "./components/Layout";
-import Doctors from "./components/Doctors";
-import Patients from "./components/Patients";
-import Dashboard from "./components/Dashboard";
+import LoginPage from "./components/pages/Login";
+import Layout from "./components/pages/Layout";
+import Patients from "./components/pages/Patients";
+import Dashboard from "./components/pages/Dashboard";
 import {BrowserRouter as Router,Routes,Route,Link,useParams}from 'react-router-dom';
 import {useQuery, gql} from '@apollo/client';
 import { HttpLink } from "@apollo/client";
-import Appointments from "./components/appointments";
+import Appointments from "./components/pages/appointments";
 import Test from "./components/Test";
-import Individual from "./components/Individual";
-import Advertisement from "./components/advertisement";
-import Requests from "./components/requests/Request";
-import UnapprovedDoctor from "./components/requests/Detail page/unapprovedDoctorProfile"
-import DoctorTabs from "./components/DoctorsTab";
-import {GETDOCTORS} from './components/Queries/queryDoctors.js'
-import { DisplayDoctors } from "./components/Queries/queryDoctors.js";
-import { GET_PATIENTS } from "./components/Queries/queryPatients";
-import { DisplayPatients } from "./components/Queries/queryPatients";
-import { DisplayAppointments } from "./components/Queries/queryAppointments";
+import Individual from "./components/pages/doctors/Detail page/Individual";
+import Advertisement from "./components/pages/advertisement";
+import Requests from "./components/pages/requests/Request";
+import UnapprovedDoctor from "./components/pages/doctors/Detail page/unapprovedDoctorProfile"
+import DoctorTabs from "./components/pages/doctors/DoctorsTab";
+
 // import UnapprovedDoctor from "./components/requests/Detail page/unapprovedDoctorProfile";
 // const uri = process.env.REACT_APP_API_URL;
 //  const uri = 'https://hakime-admin.hasura.app/v1/graphql'

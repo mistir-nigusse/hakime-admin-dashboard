@@ -1,13 +1,12 @@
 
 import React from 'react';
-import Barchart from './charts/barChart';
-import HomeCard from './Home_cards';
-import { Linechart } from './charts/linechart';
-import PatientsChart from './charts/patientChart';
+import Barchart from '../charts/barChart';
+import HomeCard from './components/Home_cards';
+import { Linechart } from '../charts/linechart';
+import PatientsChart from '../charts/patientChart';
 import { DataGrid } from '@mui/x-data-grid';
-import  app from './data/appDB.json';
-import { APPOINTMENT } from './columns/columns';
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+import  app from '../data/appDB.json';
+import { APPOINTMENT } from '../columns/columns';
   
 const Dashboard = () => {
     return (

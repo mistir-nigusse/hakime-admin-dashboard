@@ -1,5 +1,5 @@
 import React from "react";
-import doctorImg from '../images/doctor.jpg'
+import doctorImg from '../../../../images/doctor.jpg'
 
 const Individual = (props)=>{
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import BreadCrumbs from './BreadCrumbs';
-import LoginPage from './Login';
+import LoginPage from '../Login';
 
 const Header = () => {
 return (

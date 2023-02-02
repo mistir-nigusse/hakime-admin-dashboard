@@ -1,5 +1,5 @@
 import react from 'react'
-import logo from '../../../images/doctor.jpg'
+import logo from '../../../../images/doctor.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const UnapprovedDoctor = ()=>{

@@ -21,3 +21,18 @@ query GetDoctors @cached {
     }
   }
 } `;
+
+export const GET_DOCTORS_OVERVIEW = gql`
+query queryDoctorsOverview  @cached {
+  doctors(limit: 8) {
+    id
+    full_name
+    speciallities {
+      speciallity_name
+    }
+    profile_image {
+      url
+    }
+  }
+}
+`

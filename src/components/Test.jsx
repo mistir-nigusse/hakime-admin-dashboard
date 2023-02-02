@@ -85,7 +85,7 @@
 // //   );
 // // }
 import React from 'react'
-import BreadCrumbs from './BreadCrumbs'
+import BreadCrumbs from './pages/components/BreadCrumbs'
 const Test = () => {
   return (
     <div><BreadCrumbs/></div>

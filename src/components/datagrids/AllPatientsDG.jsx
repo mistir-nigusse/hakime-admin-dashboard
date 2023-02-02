@@ -1,10 +1,10 @@
 import React from 'react';
 import { DataGrid, GridRowsProp, GridColDef,GridToolbarExport,GridToolbarColumnsButton,GridToolbarFilterButton,GridToolbar, GridToolbarContainer } from "@mui/x-data-grid";
 import Box from '@mui/material/Box';
-import CustomToolbar from '../CustomToolbar';
+import CustomToolbar from './components/CustomToolbar';
 import { useQuery } from "@apollo/client";
 import Loader from "../utils/loading";
-import { GET_PATIENTS } from '../Queries/queryPatients';
+import { GET_PATIENTS } from '../model/Queries/queryPatients';
 
 export const patientsColumn = [ 
     // {

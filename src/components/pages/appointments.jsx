@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Container } from "@mui/material";
 import { DataGrid, GridRowsProp, GridColDef,GridToolbar } from "@mui/x-data-grid";
 import {useNavigate} from 'react-router-dom';
-import data from './data/appDB.json'
-import {ProgressBarChart2} from "./charts/progressbar";
-import CustomToolbar from "./CustomToolbar";
+import data from '../data/appDB.json'
+import {ProgressBarChart2} from "../charts/progressbar";
+import CustomToolbar from "../datagrids/components/CustomToolbar";
 import {Box} from "@mui/material";
-import  app from '../components/data/appDB.json';
-import { APPOINTMENT } from './columns/columns';
-import AllAppointmentsDG from "./datagrids/AllAppointmnetsDG";
+import  app from '../data/appDB.json';
+import { APPOINTMENT } from '../columns/columns';
+import AllAppointmentsDG from "../datagrids/AllAppointmnetsDG";
 
 const Appointments =()  => {
 

@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import banner from "../images/banner.jpg";
+import banner from "../../images/banner.jpg";
 
 const Advertisement = () =>{
 

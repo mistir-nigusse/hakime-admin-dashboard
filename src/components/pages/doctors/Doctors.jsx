@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Piechart } from "./charts/piechart";
-import ProgressBarChart from "./charts/progressbar";
-import AllDoctorsDataGrid from "./datagrids/AllDoctorsDataGrid";
+import { Piechart } from "../../charts/piechart";
+import ProgressBarChart from "../../charts/progressbar";
+import AllDoctorsDataGrid from "../../datagrids/AllDoctorsDataGrid";
 
 const Doctors =()  => {
   
