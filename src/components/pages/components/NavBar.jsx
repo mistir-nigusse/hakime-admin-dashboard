@@ -5,7 +5,7 @@ import DrawerItem from './DrawerItems';
  import illustration from '../../../images/ill.jpg';
 const Navigation = () => {
     return (
-        <nav className=' fixed top-0 left-0  w-2/12  t font-semibold bg-white shadow-xl rounded-lg min-h-screen  '>
+        <nav className=' text-left fixed top-0 left-0  w-2/12  t font-semibold bg-white shadow-xl rounded-lg min-h-screen  '>
             <Link to = "/"> <div className='my-6 mx-10 flex flex-row '>
         <img className="h-16 w-16 shadow-xl rounded-full" src={logo} alt="Logo" height="45"  width="45"/>
         <h3 className="m-5 text-green-900 font-bold  text-lg">HAKIME</h3>

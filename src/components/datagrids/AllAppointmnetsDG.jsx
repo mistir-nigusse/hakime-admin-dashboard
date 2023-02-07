@@ -5,7 +5,8 @@ import CustomToolbar from './components/CustomToolbar';
 import { useQuery } from "@apollo/client";
 import Loader from "../utils/loading";
 import { GET_APPOINTMENTS } from '../model/Queries/queryAppointments';
-
+import { Button } from '@mui/material';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 export const allAppointmentsColumn = [
     // {
     //     Header: "ID",
@@ -42,6 +43,30 @@ export const allAppointmentsColumn = [
         field: "status",
         flex:0.5
     },
+    {
+      
+      field: 'actions',
+      flex:2,
+      renderCell:(cellValues)=>{
+        return(
+          
+            <div>
+              <span><Button variant="text" size="small"
+          color="error"
+          onClick={(event)=>{
+            console.log("delete")
+            console.log(cellValues.id)
+          }}>
+            <DeleteForeverIcon/>
+            </Button></span>
+            
+            </div>
+            
+    
+        )
+      }
+     
+    }
 ];
 
 
@@ -78,8 +103,9 @@ function AllAppointmentsDG() {
         pagination
         headerHeight={50}
         autoHeight 
-      
+        isRowSelectable={false}
         components={{Toolbar:CustomToolbar}
+        
         
       }
         

@@ -5,6 +5,10 @@ import CustomToolbar from './components/CustomToolbar';
 import { useQuery } from "@apollo/client";
 import Loader from "../utils/loading";
 import { GET_PATIENTS } from '../model/Queries/queryPatients';
+import { Button } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import RemoveCircleOutline from "@mui/icons-material/RemoveCircleOutline";
 
 export const patientsColumn = [ 
     // {
@@ -47,6 +51,47 @@ export const patientsColumn = [
         flex:1,
         align: "center"
     },
+    {
+      headerClassName: 'super-app-theme--header',
+      headerAlign: 'center',
+      field: 'Actions',
+      flex:2,
+      renderCell:(cellValues)=>{
+        return(
+          
+            <div>
+              <span><Button variant="text" size="small"
+          color="error"
+          onClick={(event)=>{
+            console.log("suspend")
+            console.log(cellValues.id)
+          }}>
+            <RemoveCircleOutline/>
+            </Button></span>
+              <span><Button variant="text" size="small"
+          color="third"
+          onClick={(event)=>{
+            console.log("edit")
+            console.log(cellValues.id)
+          }}>
+            <EditIcon/>
+            </Button></span>
+              <span><Button variant="text" size="small"
+          color="primary"
+          onClick={(event)=>{
+            console.log("open")
+            console.log(cellValues.id)
+          }}>
+            <OpenInNewIcon/>
+            </Button></span>
+            </div>
+            
+    
+        )
+      }
+     
+    }
+    
 ]
 
 

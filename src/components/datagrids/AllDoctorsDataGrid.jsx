@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "@mui/material";
-import { DataGrid, GridRowsProp, GridColDef,GridToolbar } from "@mui/x-data-grid";
+import { Button, Container } from "@mui/material";
+import { DataGrid, GridRowsProp, GridColDef,GridToolbar,GridRowParams } from "@mui/x-data-grid";
 import {useNavigate} from 'react-router-dom';
 import {GET_DOCTORS} from "../model/Queries/queryDoctors";
 import Box from '@mui/material/Box';
 import CustomToolbar from "./components/CustomToolbar";
 import { useQuery } from "@apollo/client";
 import Loader from "../utils/loading";
-
-
+import EditIcon from '@mui/icons-material/Edit';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import RemoveCircleOutline from "@mui/icons-material/RemoveCircleOutline";
 
 const allDoctorsColumn = [
   // {
@@ -33,13 +34,13 @@ const allDoctorsColumn = [
 
       
     },
-    {
-      field: "phone_number",
-      headerName: "Phone NO",
+    // {
+    //   field: "phone_number",
+    //   headerName: "Phone NO",
       
-      flex:1,
+    //   flex:1,
       
-    },
+    // },
     {
       field: "current_hospital",
       headerName: "Hospital",
@@ -47,13 +48,13 @@ const allDoctorsColumn = [
       flex:1,
       
     },
-    {
-      field: "experience_year",
-      headerName: "Experience",
+    // {
+    //   field: "experience_year",
+    //   headerName: "Experience",
       
-      flex:1,
+    //   flex:1,
       
-    },
+    // },
     {
       field: "is_verified",
       headerName: "Verified",
@@ -61,20 +62,60 @@ const allDoctorsColumn = [
       flex:1,
       
     },
+    // {
+    //   field: "sex",
+    //   headerName: "Gender",
+      
+    //   flex:1,
+      
+    // },
+    // {
+    //   field: "rate",
+    //   headerName: "Rate",
+      
+    //   flex:1,
+      
+    // },     
     {
-      field: "sex",
-      headerName: "Gender",
       
-      flex:1,
-      
-    },
-    {
-      field: "rate",
-      headerName: "Rate",
-      
-      flex:1,
-      
-    },     
+      field: 'actions',
+      flex:2,
+      renderCell:(cellValues)=>{
+        return(
+          
+            <div>
+              <span><Button variant="text" size="small"
+          color="error"
+          onClick={(event)=>{
+            console.log("suspend")
+            console.log(cellValues.id)
+          }}>
+            <RemoveCircleOutline/>
+            </Button></span>
+              <span><Button variant="text" size="small"
+          color="third"
+          onClick={(event)=>{
+            console.log("edit")
+            console.log(cellValues.id)
+          }}>
+            <EditIcon/>
+            </Button></span>
+              <span><Button variant="text" size="small"
+          color="primary"
+          onClick={(event)=>{
+            console.log("open")
+            console.log(cellValues.id)
+          }}>
+            <OpenInNewIcon/>
+            </Button></span>
+            </div>
+            
+    
+        )
+      }
+     
+    }
+    
 ]
 
 function AllDoctorsDataGrid() {
@@ -121,7 +162,7 @@ function AllDoctorsDataGrid() {
       pagination
       headerHeight={50}
       autoHeight 
-      onRowClick={clickHandler}
+      isRowSelectable={false}
       components={{Toolbar:CustomToolbar}
       
     }

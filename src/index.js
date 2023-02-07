@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { green, teal } from '@mui/material/colors';
+import { green, teal,yellow } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -12,6 +12,9 @@ const theme = createTheme({
     },
     secondary:{
       main: teal[100]
+    },
+    third:{
+       main: yellow[800]
     }
   },
 });

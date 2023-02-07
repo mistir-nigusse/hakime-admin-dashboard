@@ -1,5 +1,4 @@
 import React from 'react';
-import BreadCrumbs from './components/BreadCrumbs';
 import Header from './components/Header'
 import Navigation from './components/NavBar'
 const Layout =({children}) =>{
