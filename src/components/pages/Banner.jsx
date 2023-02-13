@@ -4,19 +4,22 @@ import { useMutation,useQuery } from "@apollo/client";
 import banner from "../../images/banner.jpg";
 import {INSERT_BANNER} from "../model/mutations/advertisementMutations"
 import {DELETE_BANNER} from "../model/mutations/advertisementMutations"
-
+import FormDialog from "./components/modal";
+import DeleteBanner from "./components/confirmBoxModal";
+import EditDialog from "./components/editBoxModal";
 import { GET_ADS } from "../model/Queries/queryAds";
 import Loader from "../utils/loading";
-const Advertisement = () =>{
- const deleteBannerHandler = () =>{
 
- }
- const editBannerHandler = () =>{
+const Banner = () =>{
+  const [open, setOpen] = React.useState(false);
 
- }
- const deavtivateBannerHandler =()=>{
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
- }
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const [inputs, setInputs] = useState({})
   
@@ -37,9 +40,10 @@ const Advertisement = () =>{
   if (error) return <p>Error : {error.message}</p>;
  
   return(
+  
        data.banners.map((banner)=>{
             console.log(banner.the_image);
-        return  <div className="m-4 m- w-11/12  shadow-xl bg-white  rounded-xl">
+        return ( <div className="m-4 m- w-11/12  shadow-xl bg-white  rounded-xl">
           
         <div className="grid grid-rows-3">
             <div className="row-span-2 ">
@@ -52,35 +56,18 @@ const Advertisement = () =>{
               <li>published on:  {banner.start_date}</li>
               <li>End date: {banner.end_date}</li>
              </ul> 
-              <button className="bg-gray-400  rounded-md shadow-mdtext-center text-black hover:text-white hover:bg-red-900  p-2 m-4">Remove</button>
-              <button className="bg-gray-400 rounded-md shadow-mdtext-center text-black hover:text-white hover:bg-red-900   p-2 m-4">Edit</button>
-
+             <div className="flex flex-row gap-2 mt-4">
+             <DeleteBanner id={banner.id}/>             
+             <EditDialog/>
             </div>
-            <div>
-              <form onSubmit={handleSubmit}>
-                <ul>
-                  <li> <label> Name:<br/>
-                  <input type="text" name="name" onChange={handleChange} value={inputs.name || ""} className="border rounded-md p-1 "/>
-                </label></li>
-                  <li><label> Start Date:<br/>
-                  <input type="text" name="start_date" onChange={handleChange} value={inputs.start_date || ""}  className="border rounded-md p-1 "/>
-                </label></li>
-                  <li><label> End Date:<br/>
-                  <input type="text" name="end_date" onChange={handleChange} value={inputs.end_date || ""}  className="border rounded-md p-1"/>
-                </label></li>
-                
-                </ul>
-                <input type="submit"/>
-               
-              </form>
-            </div>
+             </div>
+           
+           
             </div>
             </div>
       </div>
-       })
-       
-      );
-  
-  
+       )})
+      
+      ); 
 }
-export default Advertisement;
+export default Banner;

@@ -19,6 +19,9 @@ query GetDoctors @cached {
     speciallities{
       speciallity_name
     }
+    profile_image {
+      url
+    }
   }
 } `;
 

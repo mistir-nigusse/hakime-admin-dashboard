@@ -6,11 +6,19 @@ import { useQuery } from "@apollo/client";
 import Loader from "../utils/loading";
 import { GET_PATIENTS } from '../model/Queries/queryPatients';
 import { Button } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import RemoveCircleOutline from "@mui/icons-material/RemoveCircleOutline";
+import { DELETE_USER } from '../model/mutations/usersMutations';
+import { useMutation } from '@apollo/client';
 
-export const patientsColumn = [ 
+
+
+function AllPatientsDG() {
+  
+
+  
+   const patientsColumn = [ 
     // {
     //     field: "id",
     //     headerName: "ID",
@@ -68,13 +76,16 @@ export const patientsColumn = [
           }}>
             <RemoveCircleOutline/>
             </Button></span>
+
               <span><Button variant="text" size="small"
-          color="third"
+          color="error"
           onClick={(event)=>{
-            console.log("edit")
+            console.log("delete")
             console.log(cellValues.id)
+            deleteUser({variables:{id:cellValues.id}})
+
           }}>
-            <EditIcon/>
+            <DeleteIcon/>
             </Button></span>
               <span><Button variant="text" size="small"
           color="primary"
@@ -93,12 +104,10 @@ export const patientsColumn = [
     }
     
 ]
-
-
-function AllPatientsDG() {
     const [pageSize, setPageSize] = React.useState(10); //make 5 25
     const { loading, error, data } = useQuery(GET_PATIENTS);
-    
+    const [deleteUser] = useMutation(DELETE_USER);
+
     if (loading) return <Loader/>;
     if (error) return <p>Error : {error.message}</p>;
   return (

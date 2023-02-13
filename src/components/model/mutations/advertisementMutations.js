@@ -1,15 +1,13 @@
-import {useMutation, gql} from '@apollo/client';
+import {useMutation,  gql} from '@apollo/client';
 
 export const DELETE_BANNER =gql`
-mutation DeleteBanner {
-    delete_banners(where: {id: {_eq: 10}}) {
-      affected_rows
-      returning {
-        id
-        is_active
-      }
-    }
+mutation DeleteBanner($id : Int!) {
+  delete_banners_by_pk(id: $id) {
+    id
   }
+}
+
+  
 `;
 export const INSERT_BANNER =gql`
 mutation InsertBanner($banner : String!){

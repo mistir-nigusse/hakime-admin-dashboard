@@ -3,6 +3,14 @@ import logo from '../../../images/logo.png';
 import { Link } from 'react-router-dom';
 import DrawerItem from './DrawerItems';
  import illustration from '../../../images/ill.jpg';
+ import GroupIcon from '@mui/icons-material/Group';
+ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+ import BookOnlineIcon from '@mui/icons-material/BookOnline';
+ import FeaturedVideoIcon from '@mui/icons-material/FeaturedVideo';
+ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+ import LogoutIcon from '@mui/icons-material/Logout';
+ import DashboardIcon from '@mui/icons-material/Dashboard';
 const Navigation = () => {
     return (
         <nav className=' text-left fixed top-0 left-0  w-2/12  t font-semibold bg-white shadow-xl rounded-lg min-h-screen  '>
@@ -12,12 +20,12 @@ const Navigation = () => {
         </div>
         </Link>
             <ul className=''>
-                <DrawerItem link="/" title="Dashboard"/ >
-                <DrawerItem link="/patient" title="Patients"/>
-                <DrawerItem link="/appointments" title="Appointments"/>
-                <DrawerItem link="/requests" title="Manage billings"/>
-                <DrawerItem link="/doctor" title="Manage doctors"/>
-                <DrawerItem link="/ads" title="Manage advertisment"/>
+                <DrawerItem link="/" title="Dashboard" icon={DashboardIcon}/ >
+                <DrawerItem link="/patient" title="Patients" icon={GroupIcon}/>
+                <DrawerItem link="/appointments" title="Appointments" icon={BookOnlineIcon}/>
+                <DrawerItem link="/requests" title="Manage billings" icon={NotificationsActiveIcon}/>
+                <DrawerItem link="/doctor" title="Manage doctors" icon={PeopleAltIcon}/>
+                <DrawerItem link="/ads" title="Manage advertisment" icon={FeaturedVideoIcon}/>
                
                 
               

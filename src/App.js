@@ -10,10 +10,11 @@ import { HttpLink } from "@apollo/client";
 import Appointments from "./components/pages/appointments";
 import Test from "./components/Test";
 import Individual from "./components/pages/doctors/Detail page/Individual";
-import Advertisement from "./components/pages/advertisement";
+import Ads from "./components/pages/Ads";
 import Requests from "./components/pages/requests/Request";
 import UnapprovedDoctor from "./components/pages/doctors/Detail page/unapprovedDoctorProfile"
 import DoctorTabs from "./components/pages/doctors/DoctorsTab";
+import ErrorPage from "./components/utils/errorPage"
 
 // import UnapprovedDoctor from "./components/requests/Detail page/unapprovedDoctorProfile";
 // const uri = process.env.REACT_APP_API_URL;
@@ -59,11 +60,13 @@ function App() {
   <Router>
         <Layout>
         <Routes>
-        <Route path="/individual" element={<Individual/>}/>
-          <Route path="/ads" element={<Advertisement/>}/>
+          <Route path="*" element={<ErrorPage/>}/>
+        {/* <Route path="/individual" element={<Individual/>}/> */}
+        <Route path="/individual/:doctorId" element={<Individual/>}/>
+          <Route path="/ads" element={<Ads/>}/>
           <Route path="/" element={<Dashboard/>}/>
           <Route path="/" element={<Test/>}/>
-  <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/login" element={<LoginPage/>}/>
 
           <Route path="/Requests" element={<Requests/>}/>
 

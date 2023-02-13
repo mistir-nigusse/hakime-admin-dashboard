@@ -1,7 +1,7 @@
 import {useQuery, gql} from '@apollo/client';
 
-const GET_NEW_DOCTORS = gql`
-query QueryUnapprovedDoctors @cached{
+export const GET_NEW_DOCTORS = gql`
+query QueryUnapprovedDoctors {
     doctors(where: {is_approved: {_eq: false}}) {
       id
       bio

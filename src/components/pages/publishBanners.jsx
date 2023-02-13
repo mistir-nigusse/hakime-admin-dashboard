@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
-import banner from "../../images/banner.jpg";
 import {INSERT_BANNER} from "../model/mutations/advertisementMutations"
 import { GET_ADS } from "../model/Queries/queryAds";
 

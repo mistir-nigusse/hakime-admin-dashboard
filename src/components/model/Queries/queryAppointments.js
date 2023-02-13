@@ -18,7 +18,7 @@ query AppointmentQuery @cached {
 
   `;
 
-export const GET_UPCOMMING_APPOINTMENTS = gql`
+export const GET_UPCOMING_APPOINTMENTS = gql`
 query queryConfirmedAppointments  @cached  {
   appointments(where: {status: {_eq: "confirmed"}}) {
     id

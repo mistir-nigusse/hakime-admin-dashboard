@@ -7,7 +7,7 @@ const DrawerItem = (props) =>{
                     <NavLink to={props.link} className={({isActive})=>
                         isActive? " font-bold text-green-900 underline text-lg " : "text-gray-700"
                     }>    <button className='shadow-sm  py-4  active:bg-green-900 active:text-white w-full text-left pl-8 rounded-sm'>
-                    {props.title}</button></NavLink>
+                    {props.icons}{props.title}</button></NavLink>
                 </li>
                 
                 
