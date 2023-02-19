@@ -4,7 +4,7 @@ import { useState, useEffect} from 'react';
 
 
 export const GET_DOCTORS = gql`
-query GetDoctors @cached {
+query GetDoctors {
   doctors {
     id
     full_name

@@ -1,7 +1,7 @@
 import React from "react";
 import doctorImg from '../../../../images/doctor.jpg'
 
-const Individual = (props)=>{
+const DoctorDetails = (props)=>{
     return (
         <div>
             <img src= {doctorImg} height={150}width={200}/>
@@ -9,4 +9,4 @@ const Individual = (props)=>{
         </div>
     )
 }
-export default Individual;
+export default DoctorDetails;

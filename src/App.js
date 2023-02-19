@@ -9,7 +9,8 @@ import {useQuery, gql} from '@apollo/client';
 import { HttpLink } from "@apollo/client";
 import Appointments from "./components/pages/appointments";
 import Test from "./components/Test";
-import Individual from "./components/pages/doctors/Detail page/Individual";
+import DoctorDetails from "./components/pages/doctors/Detail page/doctorsDetail";
+import NewDoctorDetails from "./components/pages/doctors/Detail page/newDoctorDetail";
 import Ads from "./components/pages/Ads";
 import Requests from "./components/pages/requests/Request";
 import UnapprovedDoctor from "./components/pages/doctors/Detail page/unapprovedDoctorProfile"
@@ -19,11 +20,18 @@ import ErrorPage from "./components/utils/errorPage"
 // import UnapprovedDoctor from "./components/requests/Detail page/unapprovedDoctorProfile";
 // const uri = process.env.REACT_APP_API_URL;
 //  const uri = 'https://hakime-admin.hasura.app/v1/graphql'
+
+let token = "token";
+
 const client = new ApolloClient({
+
+
+
   link: new HttpLink({
     uri: 'https://hakime.hasura.app/v1/graphql',
     headers: {
-      'x-hasura-admin-secret': 'hakime' 
+      //'x-hasura-admin-secret': 'hakime',
+      'Authorization' : token? `Bearer ${token}` : ''
     },
   
   }),
@@ -62,7 +70,9 @@ function App() {
         <Routes>
           <Route path="*" element={<ErrorPage/>}/>
         {/* <Route path="/individual" element={<Individual/>}/> */}
-        <Route path="/individual/:doctorId" element={<Individual/>}/>
+        <Route path="/newdoctorsdetail/:doctorId" element={<NewDoctorDetails/>}/>
+        <Route path="/doctorsdetail/:doctorId" element={<DoctorDetails/>}/>
+
           <Route path="/ads" element={<Ads/>}/>
           <Route path="/" element={<Dashboard/>}/>
           <Route path="/" element={<Test/>}/>
