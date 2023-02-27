@@ -20,20 +20,24 @@ const Navigation = () => {
         </div>
         </Link>
             <ul className=''>
-                <DrawerItem link="/" title="Dashboard" icon={DashboardIcon}/ >
+                <DrawerItem link="/home" title="Dashboard" icon={DashboardIcon}/ >
                 <DrawerItem link="/patient" title="Patients" icon={GroupIcon}/>
                 <DrawerItem link="/appointments" title="Appointments" icon={BookOnlineIcon}/>
                 <DrawerItem link="/requests" title="Manage billings" icon={NotificationsActiveIcon}/>
                 <DrawerItem link="/doctor" title="Manage doctors" icon={PeopleAltIcon}/>
                 <DrawerItem link="/ads" title="Manage advertisment" icon={FeaturedVideoIcon}/>
-               
+                <DrawerItem link="/catagories" title="Manage catagories" />
+
+                <div>
+                {/* <img src={illustration} /> */}
+            </div>
+            <DrawerItem link="/" title="logout" className="fixed"/>
                 
               
               
             </ul>
-            <div>
-                <img src={illustration} />
-            </div>
+        
+
         </nav>
     );
 };

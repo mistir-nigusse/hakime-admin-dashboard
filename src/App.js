@@ -28,10 +28,10 @@ const client = new ApolloClient({
 
 
   link: new HttpLink({
-    uri: 'https://hakime.hasura.app/v1/graphql',
+    uri: 'https://hakime-2.hasura.app/v1/graphql',
     headers: {
-      //'x-hasura-admin-secret': 'hakime',
-      'Authorization' : token? `Bearer ${token}` : ''
+      'x-hasura-admin-secret': 'hakime',
+    //  'Authorization' : token? `Bearer ${token}` : ''
     },
   
   }),
@@ -65,28 +65,32 @@ function App() {
   
  <ApolloProvider client={client}>
    {/* <DisplayDoctors/> */}
+ 
   <Router>
-        <Layout>
+    
+    
         <Routes>
+        <Route path="/" element={<LoginPage/>}/>
+
           <Route path="*" element={<ErrorPage/>}/>
         {/* <Route path="/individual" element={<Individual/>}/> */}
-        <Route path="/newdoctorsdetail/:doctorId" element={<NewDoctorDetails/>}/>
+        <Route path="/newdoctorsdetail/:doctorId" element={<UnapprovedDoctor/>}/>
         <Route path="/doctorsdetail/:doctorId" element={<DoctorDetails/>}/>
 
           <Route path="/ads" element={<Ads/>}/>
-          <Route path="/" element={<Dashboard/>}/>
-          <Route path="/" element={<Test/>}/>
-          <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/home" element={<Dashboard/>}/>
+          <Route path="/test" element={<Test/>}/>
 
           <Route path="/Requests" element={<Requests/>}/>
 
           <Route path="/Doctor" element={<DoctorTabs/>}/>
           <Route path="/Patient" element={<Patients/>}/>
           <Route path="/appointments" element={<Appointments/>}/>
-          <Route path="/newdoctor" element={<UnapprovedDoctor/>}/>
+          {/* <Route path="/newdoctor" element={<UnapprovedDoctor/>}/> */}
         </Routes>
-        </Layout>
+    
        </Router>
+     
  </ApolloProvider>
       );
 }

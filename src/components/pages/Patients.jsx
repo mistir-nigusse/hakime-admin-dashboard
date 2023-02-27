@@ -4,11 +4,13 @@ import PatientsChart from '../charts/patientChart';
 import { Piechart } from '../charts/piechart';
 import Box from '@mui/material/Box';
 import AllPatientsDG from '../datagrids/AllPatientsDG';
+import Layout from './Layout';
 
 
 const Patients = () => {
 
     return (
+        <Layout>
         <div className='grid grid-cols-3'>
         
        <div className= 'col-span-2   rounded  mr-8 ' >
@@ -26,6 +28,7 @@ const Patients = () => {
       
       </div>
     </div>
+    </Layout>
     );
 };
 export default Patients;

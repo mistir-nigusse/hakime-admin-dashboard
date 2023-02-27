@@ -6,10 +6,11 @@ import { useQuery } from "@apollo/client";
 import Loader from "../utils/loading";
 import { GET_APPOINTMENTS } from '../model/Queries/queryAppointments';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 export const allAppointmentsColumn = [
     // {
-    //     Header: "ID",
+    //     Header: "",
     //     accessor: "id",
     //     flex:0.1
     // },
@@ -73,9 +74,13 @@ export const allAppointmentsColumn = [
 function AllAppointmentsDG() {
     const [pageSize, setPageSize] = React.useState(10); //make 5 25
     const { loading, error, data } = useQuery(GET_APPOINTMENTS);
-    
+    const navigate = useNavigate();
     if (loading) return <Loader/>;
     if (error) return <p>Error : {error.message}</p>;
+
+   const handleRowClick=()=>{
+       
+    }
   return (
     <>
      <Box
@@ -104,10 +109,10 @@ function AllAppointmentsDG() {
         headerHeight={50}
         autoHeight 
         isRowSelectable={false}
-        components={{Toolbar:CustomToolbar}
+        components={{Toolbar:CustomToolbar}}
+        onRowClick={handleRowClick}
         
-        
-      }
+      
         
        />
        </Box>

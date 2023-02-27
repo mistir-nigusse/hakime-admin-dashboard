@@ -1,7 +1,7 @@
 import {useQuery, gql} from '@apollo/client';
 
 export const GET_APPOINTMENTS = gql`
-query AppointmentQuery @cached {
+query AppointmentQuery {
   appointments(order_by: {created_at: asc}) {
     id
     doctor {
@@ -19,7 +19,7 @@ query AppointmentQuery @cached {
   `;
 
 export const GET_UPCOMING_APPOINTMENTS = gql`
-query queryConfirmedAppointments  @cached  {
+query queryConfirmedAppointments   {
   appointments(where: {status: {_eq: "confirmed"}}) {
     id
     doctor {
@@ -52,8 +52,8 @@ query queryPendingAppointments @cached{
 
 `;
 export const GET_CANCELLED_APPOINTMENTS = gql`
-query queryPendingAppointments @cached{
-  appointments(where: {status: {_eq: "cancelled"}})  @cached  {
+query queryPendingAppointments {
+  appointments(where: {status: {_eq: "cancelled"}})  {
     id
     doctor {
       full_name

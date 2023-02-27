@@ -9,7 +9,7 @@ import {Box} from "@mui/material";
 import  app from '../data/appDB.json';
 import { APPOINTMENT } from '../columns/columns';
 import AllAppointmentsDG from "../datagrids/AllAppointmnetsDG";
-
+import Layout from "./Layout";
 const Appointments =()  => {
 
 
@@ -17,6 +17,7 @@ const Appointments =()  => {
   const [pageSize, setPageSize] = React.useState(10); //make 5 25
 
   return (
+    <Layout>
       <div className='grid grid-cols-3'>
  
      <div className= 'col-span-2   rounded  mr-8 ' >
@@ -35,6 +36,7 @@ const Appointments =()  => {
     
     </div>
   </div>
+  </Layout>
   );
 }
 

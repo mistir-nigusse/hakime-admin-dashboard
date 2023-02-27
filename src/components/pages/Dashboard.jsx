@@ -4,7 +4,7 @@ import Barchart from '../charts/barChart';
 import HomeCard from './components/Home_cards';
 import { Linechart } from '../charts/linechart';
 import PatientsChart from '../charts/patientChart';
-
+import Layout from './Layout';
 import {gql, useQuery}   from "@apollo/client";
 import Loader from '../utils/loading';
 import { GET_OVERVIEWS } from '../model/Queries/overviewQueries';
@@ -22,11 +22,11 @@ const Dashboard = () => {
         // console.log(data.withdrawals.length)
      
 
-        <>
+        <Layout>
         <div className='grid w-full grid-cols-4   my-4' >
             <HomeCard  counter={data.users.length} name="Patients" other="+10 new users his week" other2="+5% engagement" link="/patient"/>
            <HomeCard counter={data.doctors.length} name="Doctor" link="/doctor" other="+10 unapproved doctors" other2="+5 new doctors this week"/>
-           <HomeCard counter={data.refunds.length+data.withdrawals.length} name="Requests" link="/Requests" other=" 1 withdrawal 1 refund" other2="5 refund requests" />
+           <HomeCard counter={2+data.withdrawals.length} name="Requests" link="/Requests" other=" 1 withdrawal 1 refund" other2="5 refund requests" />
            <HomeCard counter={data.appointments.length} name="Appointments" link="/appointments" other="3 upcoming appointments" other2="10 successful this week"/>
            
         </div>
@@ -56,7 +56,7 @@ const Dashboard = () => {
              
  
         </div>
-        </>
+        </Layout>
 
 
     );

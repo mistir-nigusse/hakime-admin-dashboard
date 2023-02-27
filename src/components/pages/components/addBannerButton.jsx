@@ -33,7 +33,7 @@ export default function AddBannerButton() {
     
   }
   reader.readAsDataURL(file);
-  // insert_banner_image({ variables: { url: img} });
+ insert_banner_image({ variables: { image: img} });
 
 
 }
@@ -50,13 +50,13 @@ export default function AddBannerButton() {
    console.log(img)
    
    console.log(imgId)
-   insert_banner({ variables: { url: img, start_date:start_date, end_date:end_date} });
+  //  insert_banner({ variables: { url: img, start_date:start_date, end_date:end_date} });
 
 
   event.preventDefault();
  }
 
-const[insert_banner, {data,loading,error}] = useMutation(INSERT_BANNER);
+const[insert_banner_image, {data,loading,error}] = useMutation(INSERT_BANNER_IMAGE);
   if (loading) return 'Submitting...';
   if (error) return `Submission error! ${error.message}`;
   if (data) return 'sucesss'

@@ -11,7 +11,7 @@ mutation DeleteBanner($id : Int!) {
 `;
 export const INSERT_BANNER =gql`
 mutation InsertBanner($end_date: String!, $start_date:String!, $url:String!){
-    insert_banners(objects: {end_date: $end_date, is_active: true, start_date: $start_date, the_image:{data:{url:$url}}}) {
+    insert_banners(objects: {end_date: $end_date,  start_date: $start_date, the_image:{data:{url:$url}}}) {
       affected_rows
       returning {
         image
@@ -21,11 +21,10 @@ mutation InsertBanner($end_date: String!, $start_date:String!, $url:String!){
   }
 `;
 export const INSERT_BANNER_IMAGE  = gql`
-mutation InsertBannerImage($url :String!) {
-  insert_images(objects: {url: $url}) {
-    returning {
-      id
-    }
+mutation uploadImage($image: String!) {
+  uploadImage(base64: $image) {
+    id
+    url
   }
 }
 

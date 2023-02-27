@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 const LoginPage = ()=>{
-
+    const navigate = useNavigate();
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState("");
 
     const loginHandler = (e) => {
         e.preventDefault();
-        alert({userName})
-        console.log('Form submitted' + {userName} + "passw is" + {password})
+       navigate("/home");
     }
 
     return (

@@ -4,20 +4,20 @@ import Data from "../../data/dbb.json"
 import {useQuery, gql} from '@apollo/client';
 import {GET_NEW_DOCTORS} from '../../model/Queries/queryNewDoctors'
 import ErrorPage from "../../utils/errorPage";
-import {useNavigate} from "react-router-dom"
+import {useNavigate,useParams} from "react-router-dom"
 import Loader from "../../utils/loading";
 import doctor from "../../../images/doctor.jpg"
-
-
+import Layout from "../Layout"
+import { Button } from "@mui/material";
 
 
 
 
 const NewDoctorRequests = () =>{
-   const navigate = useNavigate();
-   const doctorClickHandler = ()=>{
-          navigate('/newdoctor')
-   }
+
+  const navigate = useNavigate();
+
+   
   
 
    
@@ -25,23 +25,35 @@ const NewDoctorRequests = () =>{
       if (loading) return <Loader/>;
       if (error) return <ErrorPage/>;
         return (
+          <Layout>
           <div className="align-middle">
              <div className="flex flex-row flex-wrap gap-4" >
                 
                 {
                     data.doctors.map(doctor =>{
+                      console.log(data)
                         return (
+                        
                             <div>
-                            <div  className="border ml-12  shadow-md rounded-md  flex-auto flex flex-row h-auto w-auto" onClick={doctorClickHandler}>
+                            <div  className="border ml-12  shadow-md rounded-md  flex-auto flex flex-row h-auto w-96" onClick={(event)=>{
+
+
+          navigate(`/newdoctorsdetail/${doctor.id}`);
+
+
+}}>
                             
-                            <img className=" rounded-full" src={doctor.profile_image.url} width="200"/>
+                            <img className="h-36 m-1 w-36 rounded-full" src={doctor.profile_image.url} />
                             <div>
                             <h4 className="px-4 pt-12"><span className="font-semibold"> DR {doctor.full_name} </span></h4>
-                            <h4 className="px-4 font-semibold">speci</h4>
-                            <h4><span className=" p-4"> <span className="font-semibold">{doctor.price}</span>/ consultation</span></h4>
-                            {/* <h4 className="px-2">Male</h4> */}
+                            <h4 className="px-4  text-gray-500">
+                              speciallity name
+                              {/* {doctor.specialities.speciallity_name} */}
+                              </h4>
+                            <h4><span className=" p-4"> <span className="font-semibold">price</span> / consultation</span></h4>
+                            {/* <h4 className="px-2">{doctor.sex}</h4> */}
                             <h5 className="px-4 pb-3">{doctor.current_hospital}</h5>
-                            <p className="text-green-900 px-4 cursor-pointer">view details ---{">"}</p>
+                            <p className="text-green-900 px-4 cursor-pointer"><Button>view details ---{">"}</Button></p>
                             </div>
                             </div>
                             </div>
@@ -50,6 +62,7 @@ const NewDoctorRequests = () =>{
                 }
              </div>
           </div>
+          </Layout>
         );
 }
 export default NewDoctorRequests;

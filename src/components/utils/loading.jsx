@@ -1,14 +1,11 @@
-import React from "react";
-const Loader = () => {
-    let circleCommonClasses = 'h-2.5 w-2.5 bg-green-900  rounded-full';
+import * as React from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
-    return (
-   <div className='flex m-auto'>
-        <div className={`${circleCommonClasses} mr-1`}></div>
-        <div className={`${circleCommonClasses} mr-1`}></div>
-        <div className={`${circleCommonClasses}`}></div>
-   </div>
-    );
-};
-
-export default Loader;
+export default function Loader() {
+  return (
+    <Box className="flex justify-center mt-48">
+      <CircularProgress />
+    </Box>
+  );
+}

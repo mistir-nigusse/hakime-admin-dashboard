@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Piechart } from "../../charts/piechart";
 import ProgressBarChart from "../../charts/progressbar";
 import AllDoctorsDataGrid from "../../datagrids/AllDoctorsDataGrid";
-
+import Layout from "../Layout";
 const Doctors =()  => {
   
   return (
-    <>
+    <Layout>
       <div className='grid grid-cols-3'>
    
    <div className= 'col-span-2   rounded  mr-8 ' >
@@ -34,7 +34,7 @@ const Doctors =()  => {
      
      
      
-  </>
+  </Layout>
   );
 }
 

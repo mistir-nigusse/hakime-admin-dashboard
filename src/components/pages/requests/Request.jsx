@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import WithdrawalRequests from './tabs/withdrawalRequests';
 import RefundRequests from './tabs/refundRequests';
-
+import Layout from '../Layout';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,12 +49,13 @@ export default function BasicTabs() {
   };
 
   return (
+    <Layout>
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs centered value={value} variant="fullWidth" onChange={handleChange} aria-label="basic tabs example" textColor='primary' indicatorColor='primary'
   >
-          <Tab label="Withdrawal requests" {...a11yProps(1)} />
-          <Tab label="Refund requests" {...a11yProps(2)} />
+          <Tab label="Refund requests" {...a11yProps(1)} />
+          <Tab label="Withdrawal requests" {...a11yProps(2)} />
         </Tabs>
       </Box>
       
@@ -65,5 +66,6 @@ export default function BasicTabs() {
         <RefundRequests/>
       </TabPanel>
     </Box>
+    </Layout>
   );
 }

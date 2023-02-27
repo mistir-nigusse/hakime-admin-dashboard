@@ -1,6 +1,5 @@
 import {useMutation, gql} from '@apollo/client';
 
-const appt= 10;
 export const deleteAppointments = gql `
 mutation deleteAppointments {
     delete_appointments(where: {id: {_eq: 10}}) {
@@ -8,3 +7,9 @@ mutation deleteAppointments {
     }
   }
 `
+export const CANCEL_APPOINTMENT = gql `
+mutation Cancelappointment ($id: Int!) {
+  update_appointments(where: {id: {_eq: $id}}, _set: {status: "cancelled"})
+}
+`
+

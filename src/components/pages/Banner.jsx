@@ -43,7 +43,8 @@ const Banner = () =>{
   
        data.banners.map((banner)=>{
             console.log(banner.the_image);
-        return ( <div className="m-4 m- w-11/12  shadow-xl bg-white  rounded-xl">
+        return ( 
+        <div className="m-4 m- w-11/12  shadow-xl bg-white  rounded-xl">
           
         <div className="grid grid-rows-3">
             <div className="row-span-2 ">

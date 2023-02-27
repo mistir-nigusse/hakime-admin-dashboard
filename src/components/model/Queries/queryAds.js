@@ -4,7 +4,6 @@ export const GET_ADS= gql`
 query GET_BANNERS {
   banners {
     id
-    is_active
     start_date
     end_date
     image

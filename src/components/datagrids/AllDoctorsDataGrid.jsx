@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Button, Container } from "@mui/material";
-import { DataGrid, GridRowsProp, GridColDef,GridToolbar,GridRowParams } from "@mui/x-data-grid";
+import { DataGrid, GridRowsProp, GridColDef,GridToolbar,GridRowParams,valueGetter } from "@mui/x-data-grid";
 import {useNavigate} from 'react-router-dom';
 import {GET_DOCTORS} from "../model/Queries/queryDoctors";
 import { useQuery, useMutation } from "@apollo/client";
@@ -8,9 +8,12 @@ import Loader from "../utils/loading";
 
 import Box from '@mui/material/Box';
 import CustomToolbar from "./components/CustomToolbar";
-import DeleteIcon from '@mui/icons-material/Delete';import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import DeleteIcon from '@mui/icons-material/Delete';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import RemoveCircleOutline from "@mui/icons-material/RemoveCircleOutline";
 import { DELETE_DOCTOR, APPROVE_DOCTOR } from "../model/mutations/doctorsMutations";
+import SuspendDoctorButton from "./components/suspendDoctorButton";
+import UnsuspendDoctorButton from "./components/unsuspendDoctorButton";
 
 
 
@@ -34,6 +37,20 @@ function AllDoctorsDataGrid() {
   const allDoctorsColumn = useMemo(
     ()=>[
       {
+        field: " ", 
+        flex:1,
+        headerName: '',
+        renderCell: (params) => {
+          return(
+            console.log(params.row.profile_image.url),
+            <img className="rounded-full h-12 w-12 p-1 " src={params.row.profile_image.url} alt="pp" />
+         
+
+            )
+        }
+    // headerAlign: 'center',
+    },
+      {
         field: "full_name",
         headerName: "Full Name",
         
@@ -44,7 +61,11 @@ function AllDoctorsDataGrid() {
         field: "speciallity_name",
         headerName: "specialization",
         flex:1,
-        valueGetter: (params) => params.row.speciallities.speciallity_name
+        valueGetter: (params) =>{
+          return(
+             params.row.speciallities.speciallity_name
+             )
+        }
     
         
       },
@@ -70,8 +91,8 @@ function AllDoctorsDataGrid() {
         
       // },
       {
-        field: "is_verified",
-        headerName: "Verified",
+        field: "is_suspended",
+        headerName: "Suspension",
         
         flex:1,
         
@@ -95,39 +116,23 @@ function AllDoctorsDataGrid() {
         field: 'actions',
         flex:2,
         renderCell:(cellValues)=>{
+          
           return(
             
-              <div>
-                <span><Button variant="text" size="small"
-            color="error"
-            onClick={(event)=>{
+              <div className="flex">
+                    { cellValues.row.is_suspended? <span><UnsuspendDoctorButton id={cellValues.id}/></span>:
 
-              console.log("suspend")
-              console.log(cellValues.id)
-              // const [insert_banners, { data, loading, error }] = useMutation(DELETE_DOCTOR);
-              deleteDoctor({variables:{id:cellValues.id}})
+                <span>
+                  <SuspendDoctorButton id={cellValues.id} />
+                 </span>
+                 }
+                 <span>
+                  <Button onClick={(e)=>{
+                           navigate(`/doctorsdetail/${cellValues.row.id}`);
 
-
-            }}>
-              <RemoveCircleOutline/>
-              </Button></span>
-                <span><Button variant="text" size="small"
-            color="error"
-            onClick={(event)=>{
-              console.log("approve")
-              console.log(cellValues.id)
-              approveDoctor({variables:{id:cellValues.id}})
-            }}>
-              <DeleteIcon/>
-              </Button></span>
-                <span><Button variant="text" size="small"
-            color="primary"
-            onClick={(event)=>{
-              console.log("open")
-              console.log(cellValues.id)
-            }}>
-              <OpenInNewIcon/>
-              </Button></span>
+                  }}><OpenInNewIcon/></Button>
+                 </span>
+               
               </div>
               
       
@@ -142,9 +147,10 @@ function AllDoctorsDataGrid() {
     
 
     const navigate = useNavigate();
-    const clickHandler =(params)=>{
-       navigate ('/individual')
-      // console.log(params.row.firstName)
+    const handleRowClick =(params)=>{
+       navigate(`/doctorsdetail/${params.row.id}`);
+
+       console.log(params.row.id)
     }
   
 
@@ -189,9 +195,8 @@ function AllDoctorsDataGrid() {
       headerHeight={50}
       autoHeight 
       isRowSelectable={false}
-      components={{Toolbar:CustomToolbar}
-      
-    }
+      components={{Toolbar:CustomToolbar} }
+      rowClick={handleRowClick}
       
      />
      </Box> 
