@@ -2,13 +2,13 @@ import React from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import  app from '../data/appDB.json';
 import {useNavigate} from 'react-router-dom';
-import {GET_WITHDRAWAL_REQUEST} from "../model/Queries/queryWithdrawalRequests";
+import {GET_REFUND_REQUEST} from "../model/Queries/queryRefundRequests";
 import { useQuery, useMutation } from "@apollo/client";
 import Loader from "../utils/loading";
 import PayButton from "./components/payButton";
-const WithdrawalRequestDG = ()=>{
+const RefundRequestDG = ()=>{
 
-    const WITHDRAWALS = [
+    const REFUNDS = [
     // {
     //     Header: "ID",
     //     accessor: "id"
@@ -79,7 +79,7 @@ const WithdrawalRequestDG = ()=>{
               <div className="flex">
 
                 <span>
-                  <PayButton id={cellValues.id} name={cellValues.row.doctor.full_name} account={cellValues.row.doctor.bank_informations[0].account_number} amount={cellValues.row.amount}/>
+                  <PayButton id={cellValues.id} />
                  </span>
                  
                  {/* <span>
@@ -105,7 +105,7 @@ const WithdrawalRequestDG = ()=>{
 ];
 
     const [pageSize, setPageSize] = React.useState(15); //make 5 25
-    const { loading, error, data } = useQuery(GET_WITHDRAWAL_REQUEST);
+    const { loading, error, data } = useQuery(GET_REFUND_REQUEST);
    
     if (loading) return <Loader/>;
     if (error) return <p>Error : {error.message}</p>;
@@ -119,8 +119,8 @@ const WithdrawalRequestDG = ()=>{
                 {/* <h4 className='font-bold p-4 text-green-900'>Upcoming appointments</h4>
                 <p className="text-right"> view all</p> */}
                 <DataGrid
-        rows={data.withdrawals}
-        columns={WITHDRAWALS}
+        rows={data.refund}
+        columns={REFUNDS}
         pageSize={5}
         // onPageSizeChange={(newPage) => setPageSize(newPage)}
         pagination
@@ -137,4 +137,4 @@ const WithdrawalRequestDG = ()=>{
     )
 }
 
-export default WithdrawalRequestDG;
+export default RefundRequestDG;
