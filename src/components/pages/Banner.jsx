@@ -9,6 +9,7 @@ import DeleteBanner from "./components/confirmBoxModal";
 import EditDialog from "./components/editBoxModal";
 import { GET_ADS } from "../model/Queries/queryAds";
 import Loader from "../utils/loading";
+import EditBannerButton from "./components/editBoxModal";
 
 const Banner = () =>{
   const [open, setOpen] = React.useState(false);
@@ -52,14 +53,14 @@ const Banner = () =>{
             </div>
             <div className="grid grid-cols-2">
             <div className="p-4 text-left ">
-             <p className="font-bold"> Teklehaymanot Hospital </p> 
+             <p className="font-bold"> {banner.business_name} </p> 
              <ul className="text-gray-700">
               <li>published on:  {banner.start_date}</li>
               <li>End date: {banner.end_date}</li>
              </ul> 
              <div className="flex flex-row gap-2 mt-4">
              <DeleteBanner id={banner.id}/>             
-             <EditDialog/>
+             {/* <EditBannerButton name={banner.business_name}/> */}
             </div>
              </div>
            

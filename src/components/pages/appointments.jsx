@@ -29,10 +29,10 @@ const Appointments =()  => {
     <ProgressBarChart2/>
   
     </div>
-    <div className='bg-white shadow-lg m-4 rounded-md'>
+    {/* <div className='bg-white shadow-lg m-4 rounded-md'> */}
   
     {/* <Piechart/> */}
-    </div>
+    {/* </div> */}
     
     </div>
   </div>

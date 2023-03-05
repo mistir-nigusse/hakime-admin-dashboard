@@ -133,9 +133,7 @@ export const GET_DOCTOR_BY_ID = gql`
       profile_image {
         url
       }
-      image {
-        url
-      }
+     
     }
   
 } `;

@@ -19,21 +19,7 @@ import UnsuspendDoctorButton from "./components/unsuspendDoctorButton";
 
 
 function AllDoctorsDataGrid() {
-  // const [insert_banners, { data, loading, error }] = useMutation(INSERT_BANNER);
-  // const updateCache = (cache, {data}) => {
-  //   // If this is for the public feed, do nothing
-   
-  //   // Fetch the todos from the cache
-  //   const current = cache.readQuery({
-  //     query: GET_DOCTORS
-  //   });
-  //   // Add the new todo to the cache
-  //   const newTodo = data.insert_todos.returning[0];
-  //   cache.writeQuery({
-  //     query: GET_DOCTORS,
-  //     data: {todos: [newTodo, ...existingTodos.todos]}
-  //   });
-  // };
+
   const allDoctorsColumn = useMemo(
     ()=>[
       {

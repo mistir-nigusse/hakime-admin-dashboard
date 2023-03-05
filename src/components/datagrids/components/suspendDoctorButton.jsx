@@ -7,6 +7,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {SUSPEND_DOCTOR} from '../../model/mutations/doctorsMutations'
 import { useMutation } from "@apollo/client";
 import RemoveCircleOutline from "@mui/icons-material/RemoveCircleOutline";
+import { GET_DOCTORS } from '../../model/Queries/queryDoctors';
 
 
 
@@ -31,12 +32,13 @@ export default function SuspendDoctorButton(props) {
 
  }
 
-const[suspend_doctor,{loading,error,data}] = useMutation(SUSPEND_DOCTOR
-//   refetchQueries: [
-//     {query: GET_NEW_DOCTORS}, // DocumentNode object parsed with gql
-//     'Unapproved_doctors', // Query name
+const[suspend_doctor,{loading,error,data}] = useMutation(SUSPEND_DOCTOR,{
+  refetchQueries: [
+    {query: GET_DOCTORS}, // DocumentNode object parsed with gql
+    'GetDoctors', // Query name
    
-//   ],
+  ],
+}
 );
 if (loading) return <p>loading</p>;
 if (error) return <p>Error : {error.message}</p>;

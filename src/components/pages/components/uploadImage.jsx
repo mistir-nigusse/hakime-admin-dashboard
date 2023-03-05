@@ -16,6 +16,7 @@ import { Label } from '@mui/icons-material';
 import { useMutation } from "@apollo/client";
 import { INSERT_BANNER, INSERT_BANNER_IMAGE } from '../../model/mutations/advertisementMutations';
 import Loader from '../../utils/loading';
+import BannerForm from './bannerForm';
 export default function UploadImageButton(props) {
  
   const [img, setImg] = React.useState("");
@@ -32,8 +33,8 @@ export default function UploadImageButton(props) {
     const response = await insert_banner_image({ variables: { image:reader.result.toString().split("base64,")[1] } });
      console.log("here is ur id",response.data.uploadImage.id);
      setImgId(response.data.uploadImage.id)
-     console.log("and your image id",imgId)
-  }
+     props.getId(response.data.uploadImage.id)
+    }
   reader.readAsDataURL(file);
        setImg(reader.result.toString().split("base64,")[1]);
 
@@ -48,7 +49,7 @@ const[insert_banner_image, {data,loading,error}] = useMutation(INSERT_BANNER_IMA
   if (loading) return <Loader/>;
   if (error) return `Submission error! ${error.message}`;
   if (data) {
-    return (<div><img src={data.uploadImage.url}/></div>)}
+    return (<div><img src={data.uploadImage.url}/><BannerForm imgId={data.uploadImage.id}/></div>)}
   return (
     //  setImgId(data.insert_images.returning[0].id),
 
@@ -67,9 +68,11 @@ const[insert_banner_image, {data,loading,error}] = useMutation(INSERT_BANNER_IMA
             }/>
         {img? (<img src={img}/>):(<div></div>)}
         </form>
-      
+      {/* <BannerForm imgId={data}/> */}
 
      
     </div>
   );
 }
+
+

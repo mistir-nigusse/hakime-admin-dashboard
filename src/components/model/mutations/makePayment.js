@@ -9,3 +9,14 @@ mutation Payment($amount: Int!, $account_number: Int!, $beneficiary_name: String
     }
   }
   `
+
+  export const Updatewithdrawal = gql`
+  mutation Updatewithdrawal ($id:Int!) {
+    update_withdrawals(where: {id: {_eq: $id}}, _set: {status: "confirmed"}){
+      returning{
+        id
+      }
+    }
+  }
+  
+  `

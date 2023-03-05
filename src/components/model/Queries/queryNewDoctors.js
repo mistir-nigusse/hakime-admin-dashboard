@@ -18,18 +18,17 @@ query Unapproved_doctors {
     }
     full_name
     id
-    image {
+    profile_image {
       url
     }
+  
     licence
     phone_number
     sex
     speciallities {
       speciallity_name
     }
-    profile_image {
-      url
-    }
+   
   }
 }
 

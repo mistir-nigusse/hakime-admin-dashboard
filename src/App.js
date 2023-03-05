@@ -23,19 +23,17 @@ import RequestTabs from "./components/pages/requests/Request";
 // const uri = process.env.REACT_APP_API_URL;
 //  const uri = 'https://hakime-admin.hasura.app/v1/graphql'
 
-let token = "token";
 const httpLink = createHttpLink({
   uri: 'https://hakime-2.hasura.app/v1/graphql',
 });
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
   const token = localStorage.getItem('token');
-  // return the headers to the context so httpLink can read them
   return {
     headers: {
-      // ...headers,
-      // authorization: token ? `Bearer ${token}` : "",
-      'x-hasura-admin-secret': 'hakime',
+     ...headers,
+   //  Authorization: token ? `Bearer ${token}` : "",
+    // 'x-hasura-admin-secret': token ? `Bearer ${token}` : "",
+   'x-hasura-admin-secret': 'hakime',
 
     }
   }
@@ -77,7 +75,7 @@ function App() {
     
     
         <Routes>
-        <Route path="/" element={<LoginPage/>}/>
+        <Route path="/login" element={<LoginPage/>}/>
 
           <Route path="*" element={<ErrorPage/>}/>
         {/* <Route path="/individual" element={<Individual/>}/> */}
@@ -85,7 +83,7 @@ function App() {
         <Route path="/doctorsdetail/:doctorId" element={<DoctorDetails/>}/>
 
           <Route path="/ads" element={<Ads/>}/>
-          <Route path="/home" element={<Dashboard/>}/>
+          <Route path="/" element={<Dashboard/>}/>
           <Route path="/test" element={<Test/>}/>
 
           <Route path="/Requests" element={<RequestTabs/>}/>

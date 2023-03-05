@@ -37,7 +37,8 @@ const DoctorDetails = (props)=>{
 <img className="m-5 rounded-full h-48 w-48" src={doctor.profile_image.url} alt="Logo" height="auto"  width="23%"/>
 <div className='m-5 px-3 pt-12 font-semibold'>
 <div className='font-bold text-2xl pb-3'>Dr {doctor.full_name} </div>
- <div className="" >{doctor.speciallity}</div>
+
+ {/* <div className="" >{doctor.speciallity}</div> */}
 <div className="" >{doctor.sex}</div>
 <div className="" >300 ETB/ consultation</div>
 <div className="" >{doctor.current_hospital}</div>
@@ -48,21 +49,24 @@ const DoctorDetails = (props)=>{
 
 <div className="mt-5 mx-5"> 
 <h4 className='font-bold m-2'>Decription:</h4>
-<p className='mx-8'>
-{doctor.bio}
-</p></div>
+<div className='mx-8'>
+   <div className='p-8 m-2 shadow-md rounded-md'>
+   {doctor.bio}
+
+   </div>
+</div></div>
    <div className="mt-5 mx-5"> 
 <h4 className='font-bold m-2'>Work Experience:</h4>
 <p className='mx-8'>
    {doctor.experiences.map((ex)=>{
       return(
-         <p>
-         <h4>{ex.hospital_name}</h4>
+         <div className='p-8 m-2 shadow-md rounded-md'>
+         <h4 className='font-bold'>{ex.hospital_name}</h4>
          <p><span>Designation:</span> {ex.designation}
          </p>
          <p><span>Department: </span>{ex.department}</p>
          <p><span>Employment Period :</span> from {ex.start_date} to {ex.end_date}</p>
-        </p>  
+        </div>  
         
       )
    })}
@@ -70,53 +74,58 @@ const DoctorDetails = (props)=>{
    </div>
 <div className="mt-5 mx-5">
    <p className='font-bold m-2' >Attachments(license):
-   {/* <img className="m-5 rounded-sm h-72 w-96" src={doctor.image.url} alt="Logo" height="auto"  width="23%"/> */}
-
+   {/* <img className="m-5 rounded-sm h-72 w-96" src={doctor.licenceImage.url} alt="Logo" height="auto"  width="23%"/> */}
+      
    </p>
 
    </div>
 </div>
-<div className='justify-right  rounded-md height-screen mt-4 shadow-md'>
-      <h3>Additional information</h3>
-      <div>Bank information</div>
+<div className='justify-right  rounded-lg height-screen mt-4 shadow-lg'>
+      {/* <h2 className='text-green-900 text-2xl font-bold m-3 p-3'>Additional information</h2> */}
+      <div className='font-bold p-3'><p className='font-bold text-green-900 text-md pb-4 '>Bank information</p>
       <p>wallet {doctor.wallet}</p>
-      <div>
+      <div className='p-4 m-2 rounded-md'>
         {
+         doctor.reviews.length == 0 ? <p className='font-normal'> no bank information provided yet</p>:
+
          doctor.bank_informations.map((bank)=>{
               return(
-               <div>
-                  <p>{bank.bank_name}</p>
-               <p>{bank.account_number}</p>
+               <div className='p-2 m-2 shadow-md rounded-md'>
+                  <p>Bank: {bank.bank_name}</p>
+               <p> Account no: {bank.account_number}</p>
                   </div>
                
               )
          })
         }
-       
+       </div>
       </div>
-      <div> 
-         <p>Rate and Review</p>
-         <Rating name="read-only" value={doctor.rate} readOnly />
+      <div className='p-2 pt-8'> 
+         <p className='font-bold text-green-900 text-md pb-4 '>Rate and Review</p>
+         <Rating name="read-only" value={doctor.rate} readOnly /> <span className='text-xl sups'>({doctor.rate})</span>
 
-         <p>comments</p>
+         <p className='pt-8 font-bold'>Reviews</p>
          {
+            doctor.reviews.length == 0 ? <p className=' m-2 rounded-md border p-8'>no reviews yet</p>:
+            <div className='m-2 p-2'>{
             doctor.reviews.map((review)=>{
                return(
-                  <div>
+                  <div className="p-4 shadow-md rounded-md m-2">
                   <div className='flex flex-row'>
-                  <img className='rounded-full h-8 w-8 ' src={review.user.profile_image.url} alt="pp"/>
-                  <p>{review.user.full_name}</p>
+                  {/* <img className='rounded-full h-8 w-8 ' src={review.user.profile_image.url} alt="pp"/> */}
+                  <p className='font-bold'>{review.user.full_name}</p>
       
                </div>
                <div>
-               <Rating name="read-only" value={review.rate} readOnly />
+               <Rating name="read-only" value={review.rate} readOnly size='small'/>
 
                   <p>{review.review}</p>
-                  <p>{review.created_at}</p>
+                  {/* <p>{review.created_at}</p> */}
                   </div>
             </div>
                   )
-            })
+            })}
+            </div>
          }
          
    

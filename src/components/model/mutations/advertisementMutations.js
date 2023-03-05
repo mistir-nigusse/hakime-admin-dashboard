@@ -10,8 +10,8 @@ mutation DeleteBanner($id : Int!) {
   
 `;
 export const INSERT_BANNER =gql`
-mutation InsertBanner($end_date: String!, $start_date:String!, $url:String!,$bussiness_name:String!){
-    insert_banners(objects: {end_date: $end_date, bussiness_name:$bussiness_name start_date: $start_date, the_image:{data:{url:$url}}}) {
+mutation InsertBanner($end_date: String!, $start_date:String!, $id:Int!,$bussiness_name:String!){
+    insert_banners(objects: {end_date: $end_date, business_name:$bussiness_name start_date: $start_date, image:$id}) {
       affected_rows
       returning {
         image
@@ -29,21 +29,21 @@ mutation uploadImage($image: String!) {
 }
 
 `
-export const UPDATE_BANNER =gql`
-mutation UpdateBanner {
-    update_banners(where: {id: {_eq: 10}}, _set: {image: "zzfg", is_active: true, start_date: "jkk", end_date: "nmlk"}) {
-     affected_rows
-     returning {
-       end_date
-       id
-       image
-       is_active
-       start_date
-     }
-   }
- }
+// export const UPDATE_BANNER =gql`
+// mutation UpdateBanner ($id: Int!, $) {
+//     update_banners(where: {id: {_eq: 10}}, _set: {image: "zzfg", is_active: true, start_date: "jkk", end_date: "nmlk"}) {
+//      affected_rows
+//      returning {
+//        end_date
+//        id
+//        image
+//        is_active
+//        start_date
+//      }
+//    }
+//  }
  
-`;
+// `;
 
 
   

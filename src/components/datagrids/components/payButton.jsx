@@ -4,7 +4,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Payment } from '../../model/mutations/makePayment';
+import { Payment, Updatewithdrawal } from '../../model/mutations/makePayment';
 import { useMutation } from "@apollo/client";
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
@@ -12,6 +12,7 @@ import FormLabel from '@mui/material/FormLabel';
 import AddIcon from '@mui/icons-material/Add';
 import { Label } from '@mui/icons-material';
 import { TextField } from '@mui/material';
+import { GET_WITHDRAWAL_REQUEST } from '../../model/Queries/queryWithdrawalRequests';
 
 export default function PayButton(props) {
   const [open, setOpen] = React.useState(false);
@@ -19,7 +20,7 @@ export default function PayButton(props) {
   const [amount, setAmount] = React.useState(props.amount);
   const [beneficiaryName, setBeneficiaryName] = React.useState(props.name);
   const [accountNumber, setAccountNumber] = React.useState(props.account);
-
+  const [id, setId] = React.useState(props.id);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -31,28 +32,39 @@ export default function PayButton(props) {
   };
  const handlePayment = (event)=>{
   event.preventDefault();
-   
-   pay({ variables: { account_number: accountNumber , amount:amount , beneficiary_name: beneficiaryName} });
+    updateWithdrawal({ variables: { id: id } });
+  
+  //  pay({ variables: { account_number: accountNumber , amount:amount , beneficiary_name: beneficiaryName} });
     handleClose();
 
  }
 
-const[pay,{loading,error,data}] = useMutation(Payment
+// const[pay,{loading,error,data}] = useMutation(Payment
 //   refetchQueries: [
 //     {query: GET_NEW_DOCTORS}, // DocumentNode object parsed with gql
-//     'Unapproved_doctors', // Query name
+//   'Unapproved_doctors', // Query name
    
 //   ],
-);
+// );
+const [updateWithdrawal,{loading,error,data}] = useMutation(Updatewithdrawal,{
+  refetchQueries :[
+    {query: GET_WITHDRAWAL_REQUEST}, // DocumentNode object parsed with gql
+  'withdrawalRequest' // Query name
+   
+  ]
+}
+
+  )
+
 if (loading) return <p>loading</p>;
 if (error) return <p>Error : {error.message}</p>;
-if(data) return <p className='text-red-900 font-bold'>suspended</p>
+if(data) return <p className='text-green-900 font-bold'>confirmed</p>
   
   return (
    
     <div className=''>
 
-      <Button  onClick={handleClickOpen} variant="text" size="small" color="error">
+      <Button  onClick={handleClickOpen} variant="outlined" size="small" >
     
          Pay
       </Button>
@@ -116,7 +128,7 @@ if(data) return <p className='text-red-900 font-bold'>suspended</p>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button variant='contained' >Proceed</Button>
+          <Button variant='contained' onClick={handlePayment}>Proceed</Button>
         </DialogActions>
       </Dialog>
     </div>

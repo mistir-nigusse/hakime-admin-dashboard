@@ -23,7 +23,7 @@ const NewDoctorRequests = () =>{
    
     const { loading, error, data } = useQuery(GET_NEW_DOCTORS);
       if (loading) return <Loader/>;
-      if (error) return <ErrorPage/>;
+      if (error) return <p>this</p>;
         return (
           <Layout>
           <div className="align-middle">
@@ -35,15 +35,16 @@ const NewDoctorRequests = () =>{
                         return (
                         
                             <div>
-                            <div  className="border ml-12  shadow-md rounded-md  flex-auto flex flex-row h-auto w-96" onClick={(event)=>{
+                            <div  className="ml-12  shadow-md rounded-lg  flex-auto flex flex-row h-auto w-96" onClick={(event)=>{
 
 
           navigate(`/newdoctorsdetail/${doctor.id}`);
 
 
 }}>
-                            
-                            <img className="h-36 m-1 w-36 rounded-full" src={doctor.profile_image.url} />
+                 <img className="h-36 m-1 w-36 rounded-full" src={doctor.profile_image.url} />
+
+                          
                             <div>
                             <h4 className="px-4 pt-12"><span className="font-semibold"> DR {doctor.full_name} </span></h4>
                             <h4 className="px-4  text-gray-500">

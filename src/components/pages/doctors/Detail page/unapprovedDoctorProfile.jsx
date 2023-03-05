@@ -25,6 +25,7 @@ const UnapprovedDoctor = (props)=>{
 
     {
       data.doctors.map((doctor)=>{
+         console.log(doctor)
          return(
             <div className='flex justify-center '>
             {/* <p>{doctor.id}</p> */}
@@ -67,7 +68,10 @@ const UnapprovedDoctor = (props)=>{
    </div>
 <div className="mt-5 mx-5">
    <p className='font-bold m-2' >Attachments(license):
-   <img className="m-5 rounded-sm h-72 w-96" src={doctor.image.url} alt="Logo" height="auto"  width="23%"/>
+
+     <img className="m-5 rounded-sm h-72 w-96" src={doctor.licenceImage.url} alt="Logo" height="auto"  width="23%"/>
+
+   
 
    </p>
 

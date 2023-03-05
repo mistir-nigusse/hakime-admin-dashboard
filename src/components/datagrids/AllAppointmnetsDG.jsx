@@ -42,33 +42,34 @@ export const allAppointmentsColumn = [
     {
         Header: "Status",
         field: "status",
-        flex:0.5
+        flex:1
     },
-    {
+    // {
       
-      field: 'actions',
-      flex:2,
-      renderCell:(cellValues)=>{
-        return(
+    //   field: 'actions',
+    //   flex:2,
+    //   renderCell:(cellValues)=>{
+    //     return(
           
-            <div>
-              <span><Button variant="text" size="small"
-          color="error"
-          onClick={(event)=>{
-            console.log("delete")
-            console.log(cellValues.id)
-          }}>
-            <DeleteForeverIcon/>
-            </Button></span>
+    //         <div>
+    //           <span><Button variant="text" size="small"
+    //       color="error"
+    //       onClick={(event)=>{
+    //         console.log("delete")
+    //         console.log(cellValues.id)
+    //       }}>
+    //         <DeleteForeverIcon/>
+    //         </Button></span>
             
-            </div>
+    //         </div>
             
     
-        )
-      }
+    //     )
+    //   }
      
-    }
-];
+    // }
+
+  ];
 
 
 function AllAppointmentsDG() {

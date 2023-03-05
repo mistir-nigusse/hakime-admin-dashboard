@@ -27,6 +27,7 @@ function AllPatientsDG() {
     //     flex:0.1,
     //     align: "center"
     // },
+  
     {
         field: "full_name",
         headerClassName: 'super-app-theme--header',
@@ -52,17 +53,40 @@ function AllPatientsDG() {
         align: "center"
     },
     {
-        field: "created_at",
-        headerName: "Create at",
-        headerClassName: 'super-app-theme--header',
-        headerAlign: 'center',
-        flex:1,
-        align: "center"
+      field: "email",
+      headerName: "Email",
+      headerClassName: 'super-app-theme--header',
+      headerAlign: 'center',
+      flex:1.5,
+      align: "center"
+  },
+  {
+    field: " ", 
+    flex:1,
+    headerName: 'Total appointments',
+    renderCell: (params) => {
+      console.log(params)
+      return(
+        
+         params.row.appointments.length
+              
+        )
     },
+    align: "center"
+  },
+    // {
+    //     field: "created_at",
+    //     headerName: "Create at",
+    //     headerClassName: 'super-app-theme--header',
+    //     headerAlign: 'center',
+    //     flex:1,
+    //     align: "center"
+    // },
     {
       headerClassName: 'super-app-theme--header',
       headerAlign: 'center',
       field: 'Actions',
+      align: 'center',
       flex:2,
       renderCell:(cellValues)=>{
         return(
@@ -77,7 +101,7 @@ function AllPatientsDG() {
             <RemoveCircleOutline/>
             </Button></span>
 
-              <span><Button variant="text" size="small"
+              {/* <span><Button variant="text" size="small"
           color="error"
           onClick={(event)=>{
             console.log("delete")
@@ -86,15 +110,15 @@ function AllPatientsDG() {
 
           }}>
             <DeleteIcon/>
-            </Button></span>
-              <span><Button variant="text" size="small"
+            </Button></span> */}
+              {/* <span><Button variant="text" size="small"
           color="primary"
           onClick={(event)=>{
             console.log("open")
             console.log(cellValues.id)
           }}>
             <OpenInNewIcon/>
-            </Button></span>
+            </Button></span> */}
             </div>
             
     

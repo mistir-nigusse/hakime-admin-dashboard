@@ -21,7 +21,13 @@ const PublishBanner = () =>{
     event.preventDefault();
   }
   
-  const [insert_banners, { data, loading, error }] = useMutation(INSERT_BANNER);
+  const [insert_banners, { data, loading, error }] = useMutation(INSERT_BANNER,{
+    refetchQueries: [
+      {query: GET_ADS}, // DocumentNode object parsed with gql
+      'GET_BANNERS', // Qu
+    ]
+  }
+  );
 
   if (loading) return 'Submitting...';
   if (error) return `Submission error! ${error.message}`;

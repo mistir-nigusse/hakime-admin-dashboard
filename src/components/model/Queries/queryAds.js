@@ -6,9 +6,9 @@ query GET_BANNERS {
     id
     start_date
     end_date
-    image
+    business_name
     the_image {
-      id
+      
       url
     }
   }
